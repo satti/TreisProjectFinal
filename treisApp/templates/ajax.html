@@ -1,0 +1,130 @@
+<script>
+    $(document).ready(function()
+    {
+       elements = document.getElementsByName('the-row');
+       console.log(elements.length)
+       for(let i=1; i<=elements.length; ++i)
+       {
+       parseInt($("#T"+i+"").val(0));   
+       console.log(elements[i]);
+       $("#E"+i+"").on("change",function(){
+          
+          if(parseInt($("#E"+i+"").val())<0 || parseInt($("#E"+i+"").val())>100)
+             {
+                $("#E"+i+"").focus();
+                alert("Please enter marks between 0 and 100");
+                parseInt($("#E"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#MA"+i+"").val()) || 0 ) + (parseInt($("#MB"+i+"").val()) || 0 ) +
+          (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
+       });
+       $("#S"+i+"").on("change",function(){
+          // if(s2<0 || s2>100)
+          //    {
+          //       alert("Please enter marks between 0 and 100");
+          //       this.focus();
+          //    }
+          if(parseInt($("#S"+i+"").val())<0 || parseInt($("#S"+i+"").val())>100)
+             {
+                $("#s"+i+"").focus();
+                alert("Please enter marks between 0 and 100");
+                parseInt($("#S"+i+"").val(this.focus()));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#MA"+i+"").val()) || 0 ) + (parseInt($("#MB"+i+"").val()) || 0 ) +
+          (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
+       });
+       $("#MA"+i+"").on("change",function(){
+          // if(s3<0 || s3>75)
+          //    {
+          //       alert("Please enter marks between 0 and 75");
+          //       this.focus();
+          //    }
+          if(parseInt($("#MA"+i+"").val())<0 || parseInt($("#MA"+i+"").val())>75)
+             {
+                $("#MA"+i+"").focus();
+                alert("Please enter marks between 0 and 75");
+                parseInt($("#MA"+i+"").val(''));
+             }
+ 
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#MA"+i+"").val()) || 0 ) + (parseInt($("#MB"+i+"").val()) || 0 ) +
+          (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
+       });
+       $("#MB"+i+"").on("change",function(){
+          // if(s4<0 || s4>75)
+          //    {
+          //       alert("Please enter marks between 0 and 75");
+          //       this.focus();
+          //    }
+          if(parseInt($("#MB"+i+"").val())<0 || parseInt($("#MB"+i+"").val())>75)
+             {
+                $("#MB"+i+"").focus();
+                alert("Please enter marks between 0 and 75");
+                parseInt($("#MB"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#MA"+i+"").val()) || 0 ) + (parseInt($("#MB"+i+"").val()) || 0 ) +
+          (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
+       });
+       $("#P"+i+"").on("change",function(){
+          // if(s5<0 || s5>60)
+          //    {
+          //       alert("Please enter marks between 0 and 60");
+          //    }
+          if(parseInt($("#P"+i+"").val())<0 || parseInt($("#P"+i+"").val())>60)
+             {
+                $("#P"+i+"").focus();
+                alert("Please enter marks between 0 and 60");
+                parseInt($("#P"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#MA"+i+"").val()) || 0 ) + (parseInt($("#MB"+i+"").val()) || 0 ) +
+          (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
+    });
+       $("#C"+i+"").on("change",function(){
+          // if(s6<0 || s6>60)
+          //    {
+          //       alert("Please enter marks between 0 and 60");
+          //       this.focus();
+          //    }
+          if(parseInt($("#C"+i+"").val())<0 || parseInt($("#C"+i+"").val())>60)
+             {
+                $("#C"+i+"").focus();
+                alert("Please enter marks between 0 and 60");
+                parseInt($("#C"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#MA"+i+"").val()) || 0 ) + (parseInt($("#MB"+i+"").val()) || 0 ) +
+          (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
+          //console.log(Total);
+       });
+       //let s2 = parseInt($("#S"+i+"").val());
+       //let s3 = parseInt($("#MA"+i+"").val());
+       //let s4 = parseInt($("#MB"+i+"").val());
+       //let s5 = parseInt($("#P"+i+"").val());
+       //let s6 = parseInt($("#C"+i+"").val());
+       // console.log(s1+s2+s3+s4+s5+s6);
+       // Total = s1+s2+s3+s4+s5+s6;
+    //console.log("s5 + s6 is",s5+s6);
+    }
+ });
+    $("form")[0].reset();
+    $("#marksidb").click(function(){
+       console.log("button clicked")
+       //$('#the-row:input').each(function(){
+         // console.log(this.value);
+       //});
+    });
+       //$("#marksidb").click(function(){
+         // var elements = document.querySelectorAll("#marksform input[type=text]");
+          //console.log(elements);
+          //for(var i=0; i<elements.length;i++){
+            // var check = document.getElementById(elements[i].id).value;
+             //console.log(check);
+          //}
+          //console.log("HAI BRO");
+       //document.getElementById("demo").innerHTML="this is my first javascript";
+    //});
+ </script>

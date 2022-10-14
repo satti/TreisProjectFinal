@@ -1,0 +1,32 @@
+{%extends 'home.html'%}
+{%block content%}
+<html>
+    <div class="container">
+    <head>
+        <h1 class="text-center alert-info">Students Information</h1>
+    </head>
+</div>
+    <body>
+        <div class="container text-center">
+        <form method="post" class="form-control">
+            {%csrf_token%}
+            <label>Select Year:</label>
+            <select class="form-select" name="year", id="year">
+                <option value="select">Select</option>
+                <option value="I year">First Year</option>
+                <option value="II year">Second Year</option>
+            </select><br>
+            <label> Select Group:</label>
+                <select class="form-select" name='group' id="group">
+                    <option value="select">Select</option>
+                    <option value="MPC">MPC</option>
+                    <option value="BPC">BPC</option>
+                    <option value="MEC">MEC</option>
+                </select>
+            </label><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
+{%endblock%}

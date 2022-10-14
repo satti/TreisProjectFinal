@@ -1,0 +1,119 @@
+{%include 'cdnlines.html'%}
+{%load static%}
+<html>
+    <head>
+        <title>TREIS</title>
+        <div class="container" style="background-color: rgb(77, 77, 241); border-radius: 25px;">    
+            <div style="float: left;">
+                <img style="border-radius: 40px;" src="{% static 'logo.png' %}" alt="TREIS LOGO" height="90px" width="90px">
+            </div>
+            <div style="color: white; font-size: 65px; text-align: center; float: center;">
+                <p>TREIS (R), HYDERABAD.</p>
+            </div>
+        </div>
+        <style>
+            a {
+                font-size: 20px;
+                color: white;
+            }
+            .nav-link{
+                color: white;
+            }
+            .logoutitem {
+                float: right;
+            }
+            .navul {
+                float: right;
+            }
+            .body{
+                background-image: "{% static 'body.jpg' %}";
+            }
+        </style>
+    </head>       
+    <body class="body">
+        <div class="container">
+            <nav class="navbar navbar-dark" style="background-color: rebeccapurple">        
+                <div style="float: left;">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                {%if request.user.is_authenticated %}
+                    <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Student Entry
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'student' %}">Student Entry</a></li>
+            <li><a class="dropdown-item" href="{% url 'studentsreport' %}">Student Data</a></li>
+        </ul>
+        </li>
+            <!--            
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'student' %}">Student Entry</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'studentsreport' %}">Student Data</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'marksentry' %}">Marks Entry</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'markslist' %}">Marks Report</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'percapitaApp:percapita'%}">Item Purchases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'percapitaApp:itemsinfo'%}">Items List</a>
+                        </li>
+                    -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Reports
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{% url 'marksentry' %}">Marks Entry</a></li>
+                          <li><a class="dropdown-item" href="{% url 'markslist' %}">Marks Report</a></li>
+                      </ul>
+                      </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Percapita
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="{% url 'percapitaApp:percapita'%}">Purchase Entry</a></li>
+                              <li><a class="dropdown-item" href="{% url 'percapitaApp:itemsinfo'%}">Stock Details</a></li>
+                            </ul>
+                          </li>
+                    </ul>
+                </div>
+                    <div style="float: right;">
+                        <ul class="nav">                
+                            <span class="navbar-text" style="font-size: 20px; color: yellow;">Welcome! {{request.user|capfirst}}</span>
+                                <li class="nav-item" style="float: right;">
+                                <a class="nav-link" href="{% url 'logoutpage' %}">Logout</a>
+                                </li>
+                        </ul>
+                    </div>
+            {%else%}
+                </ul>
+            </div>
+                <div style="float: right;">
+                    <ul class="nav">
+                        <li class="nav-item" style="float: right;">
+                            <a class="nav-link" href="{%url 'loginview' %}">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            {%endif%} 
+            </nav>
+            <br>
+        </div>
+    {%block content%}
+
+
+    {%endblock%}
+    </body>
+</html>

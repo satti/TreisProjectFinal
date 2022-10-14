@@ -1,0 +1,51 @@
+{%extends 'home.html'%}
+{%block content%}
+<html>
+<div class="container">
+    <head><h1 class="alert-info text-center">Purchase Entry</h1>
+    </head>
+</div>
+    <body>
+    <div class="container text-center">
+    <form method="post" class="form-control">
+        {%csrf_token%}
+        <table class="table table-bordered">
+        <thead>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Bill No.</th>
+            <th>Invoice Date</th>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+        </table>
+            <input type="button" value="additem" id="additembutton" name="additembutton" class="btn-success"><br><br>
+            <input type="hidden" id="iter" name="iter"></input>
+            <input type="submit" value="Submit">
+        </form>
+    <script>
+        $(document).ready(function(){
+            var i=1;
+        $("#additembutton").click(function(){
+            $("#tbody").append("<tr>"
+                +"<td>"+"<select id=item"+i+" name=item"+i+">"+
+                    "<option>"+"Kandipappu"+"</option>"+
+                    "<option>"+"Rice"+"</option>"+
+                    "<option>"+"Oil"+"</option>"
+                    +"</td>"+
+                "<td>"+"<input size='5' type='text' name=qty"+i+" id=qty"+i+">"+"</td>"+
+                "<td>"+"<input size='5' type='text' name=price"+i+" id=price"+i+">"+"</td>"+
+                "<td>"+"<input size='5' type='text' name=bill"+i+" id=bill"+i+">"+"</td>"+
+                "<td>"+"<input type='date' name=date"+i+" id=date"+i+">"+"</td>"+
+                "</tr>")
+                i++
+                $('#iter').val(i)
+            });    
+    
+        });
+    </script>
+</body>
+</div>
+</html>
+{%endblock%}

@@ -1,0 +1,46 @@
+{%extends 'home.html'%}
+<html>
+{%block content%}
+<div class="container">
+<head>
+    <h1 class="alert-danger text-center">Students Information</h1>
+</head>
+</div>
+<body>
+<div class="container">
+<table class="table table-bordered text-center">
+    <thead>
+        <th>SL.No.</th>
+        <th>Student Name</th>
+        <th>Year</th>
+        <th>Group</th>
+        <th>English</th>
+        <th>Sanskrit</th>
+        <th>Maths-A</th>
+        <th>Maths-B</th>
+        <th>Physics</th>
+        <th>Chemistry</th>
+        <th>Total</th>
+    </thead>
+    <tbody>
+        {%for i in report%}
+        <tr>
+            <td class="text-center">{{forloop.counter}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.year}}</td>
+            <td>{{i.group}}</td>
+            <td>{{i.s1}}</td>
+            <td>{{i.s2}}</td>
+            <td>{{i.s3}}</td>
+            <td>{{i.s4}}</td>
+            <td>{{i.s5}}</td>
+            <td>{{i.s6}}</td>
+            <td>{{i.s1 |add:i.s2 |add:i.s3 |add:i.s4 |add:i.s5 |add:i.s6}}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+</body>
+{%endblock%}
+</div>
+</html>

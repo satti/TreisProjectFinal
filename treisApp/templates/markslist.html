@@ -1,0 +1,46 @@
+{%extends 'home.html'%}
+{%block content%}
+<html>
+    <div class="container">    <head>
+        <h1 class="text-center alert-success">Students Marks</h1>
+    </head>
+</div>
+
+    <body>
+        <div class="container">
+            <div class="container row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2">    
+            <form method="post">
+            {%csrf_token%}
+            <label style="font-size: 20px;">Select Year:</label>
+            <select class="form-select" name="year", id="year">
+                <option value="select">Select</option>
+                <option value="I year">First Year</option>
+                <option value="II year">Second Year</option>
+            </select><br>
+            <label style="font-size: 20px;"> Select Group:</label>
+                <select class="form-select" name='group' id="group">
+                    <option value="select">Select</option>
+                    <option value="MPC">MPC</option>
+                    <option value="BPC">BPC</option>
+                    <option value="MEC">MEC</option>
+                </select><br>
+                <label style="font-size: 20px;"> Test Type:</label>
+                <select class="form-select" name='testtype' id="testtype">
+                    <option value="select">Select</option>
+                    <option value="Unit Test-I">Unit Test-I</option>
+                    <option value="Unit Test-II">Unit Test-II</option>
+                    <option value="Unit Test-III">Unit Test-III</option>
+                    <option value="Grand Test-I">Grand Test-I</option>
+                    <option value="Grand Test-II">Grand Test-II</option>
+                    <option value="Grand Test-III">Grand Test-III</option>
+                </select>
+                <br>
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+        </div>           
+        </div>
+    </body>
+{%endblock%}
+</html>

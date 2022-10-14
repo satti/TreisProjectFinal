@@ -1,0 +1,22 @@
+{%extends 'home.html'%}
+{%block content%}
+<html>
+    <div class="container">    <head>
+        <h1 class="text-center">Login Form:</h1>
+    </head>
+</div>
+    <body>
+        <div class="d-flex justify-content-center">
+        <form method="post">
+            {%csrf_token%}
+            <label style="font-size: 30px;">Username:</label>
+            <input height="200px" type="text" name="username" class="form-control" placeholder="Type username...">
+            <label style="font-size: 30px;">Password:</label>
+            <input type="password" name="password" class="form-control" placeholder="Type password..."><br>
+            <input class="btn btn-success" type="submit" value="Login">
+            <input class="btn btn-danger" type="reset" value="Reset">
+        </form>
+    </div>
+    </body>
+</html>
+{%endblock%}

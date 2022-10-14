@@ -1,0 +1,34 @@
+{%extends 'home.html'%}
+{%block content%}
+<html>
+    <div class="container">
+    <h1 class="text-center">Items are</h1>
+</div>
+<body>
+    <div class="container">
+    <table class="table table-bordered text-center">
+        <thead>
+            <th>SL.No.</th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Bill No.</th>
+            <th>Bill Date</th>
+        </thead>
+        <tbody>
+            {%for i in items%}
+            <tr>
+                <td class="text-center">{{forloop.counter}}</td>
+                <td>{{i.item}}</td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.ino}}</td>
+                <td>{{i.dop}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
+{%endblock%}
