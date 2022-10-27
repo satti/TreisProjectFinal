@@ -54,11 +54,11 @@ def students(request):
         #stu = deepcopy(students)
         print(students.count())
         if students:
-            p = Paginator(students,1)
+            p = Paginator(students,2)
             #page_request_var = "page"
-            page_number = request.GET.get('page')
-            print('page_number',page_number)
-            print()
+            page_number = request.session.get('pa')
+            #print('page_number',page_number)
+            #print()
             #page_obj = p.get_page(page_number)
             try:
                 page_obj = p.get_page(page_number)
@@ -67,10 +67,11 @@ def students(request):
             except EmptyPage:
                 page_obj = p.page(p.num_pages)
             #-context = {'page_obj': page_obj,'page_request_var':page_request_var}
-            print(dir(p))
-            print(request.GET.get('page'))
+            #print(dir(p))
+            #print('page')
             return render(request,'studentslist.html',{'students':students,'page_obj':page_obj})
     else:
+        request.session['pa']=1
         return render(request,'student_display.html',{})
 
 '''
@@ -121,22 +122,42 @@ def marksEntry(request):
             test = request.GET.get('test')
             ac = Student.objects.filter(user_id=request.user.id).values()[0]['academicyear']
             print(ac)
-            E = request.POST.get('E'+str(i)+'')
-            S = request.POST.get('S'+str(i)+'')
-            MA = request.POST.get('MA'+str(i)+'')
-            MB = request.POST.get('MB'+str(i)+'')
-            P = request.POST.get('P'+str(i)+'')
-            C = request.POST.get('C'+str(i)+'')
-            Marks.objects.create(name=name,user=user,year=year,group=group,testtype=test,ac=ac,s1=E,s2=S,s3=MA,s4=MB,s5=P,s6=C)
+            if group == 'MPC':
+                E = request.POST.get('E'+str(i)+'')
+                S = request.POST.get('S'+str(i)+'')
+                MA = request.POST.get('MA'+str(i)+'')
+                MB = request.POST.get('MB'+str(i)+'')
+                P = request.POST.get('P'+str(i)+'')
+                C = request.POST.get('C'+str(i)+'')
+                Marks.objects.create(name=name,user=user,year=year,group=group,testtype=test,ac=ac,s1=E,s2=S,s3=MA,s4=MB,s5=P,s6=C)
+            elif group == 'BPC':
+                E = request.POST.get('E'+str(i)+'')
+                S = request.POST.get('S'+str(i)+'')
+                MA = request.POST.get('BO'+str(i)+'')
+                MB = request.POST.get('ZO'+str(i)+'')
+                P = request.POST.get('P'+str(i)+'')
+                C = request.POST.get('C'+str(i)+'')
+                Marks.objects.create(name=name,user=user,year=year,group=group,testtype=test,ac=ac,s1=E,s2=S,s3=MA,s4=MB,s5=P,s6=C)
+            else:   
+                E = request.POST.get('E'+str(i)+'')
+                S = request.POST.get('S'+str(i)+'')
+                MA = request.POST.get('EMA'+str(i)+'')
+                MB = request.POST.get('EMB'+str(i)+'')
+                P = request.POST.get('ECO'+str(i)+'')
+                C = request.POST.get('COMM'+str(i)+'')
+                Marks.objects.create(name=name,user=user,year=year,group=group,testtype=test,ac=ac,s1=E,s2=S,s3=MA,s4=MB,s5=P,s6=C)
         return redirect(homeView)
     else:
+        g = request.GET.get('group')
         if Marks.objects.filter(user_id=request.user.id,group=request.GET.get('group'),testtype=request.GET.get('test'),
         year=request.GET.get('year')):
             return render(request,'marksalreadyentered.html',{})
-        else: 
-            return render(request,'marks.html',{'form':form})  
-
-
+        elif g =='MPC': 
+            return render(request,'marks.html',{'form':form})
+        elif g =='BPC':
+            return render(request,'marksbpc.html',{'form':form})
+        else:
+            return render(request,'marksmec.html',{'form':form})  
 '''
 def marksReport(request):
     if request.method =="GET":
@@ -154,7 +175,12 @@ def marksList(request):
         g = request.POST.get('group')
         type = request.POST.get('testtype')
         report = Marks.objects.filter(user_id=request.user.id,year=y,group=g,testtype=type)
-        return render(request,'marksreport.html',{'report':report})
+        if g =='MPC':
+            return render(request,'marksreport.html',{'report':report})
+        elif g == 'BPC':
+            return render(request,'marksreportbpc.html',{'report':report})
+        else:
+            return render(request,'marksreportmec.html',{'report':report})
     else:
         return render(request,'markslist.html',{})
 

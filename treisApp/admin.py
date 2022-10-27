@@ -51,6 +51,13 @@ class MarksAdmin(admin.ModelAdmin):
             else:
                 return 'Fail'
 
+'''
+class StAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+'''
+
 admin.site.register(Student,StudentAdmin)
 admin.site.register(Marks,MarksAdmin)
 
+
+#admin.site.register(St,StAdmin)

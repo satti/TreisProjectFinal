@@ -2,6 +2,7 @@ from datetime import date
 from operator import mod
 from os import access
 from random import choices
+from unicodedata import name
 #from tkinter import CASCADE, CURRENT
 from django.contrib.auth.models import User
 from django.db import models
@@ -41,4 +42,3 @@ class Marks(models.Model):
     s6 = models.IntegerField()
     def __str__(self):
         return self.name
-

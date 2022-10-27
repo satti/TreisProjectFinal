@@ -68,6 +68,36 @@
           (parseInt($("#MA"+i+"").val()) || 0 ) + (parseInt($("#MB"+i+"").val()) || 0 ) +
           (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
        });
+       $("#BO"+i+"").on("change",function(){
+          // if(s5<0 || s5>60)
+          //    {
+          //       alert("Please enter marks between 0 and 60");
+          //    }
+          if(parseInt($("#BO"+i+"").val())<0 || parseInt($("#BO"+i+"").val())>60)
+             {
+                $("#BO"+i+"").focus();
+                alert("Please enter marks between 0 and 60");
+                parseInt($("#BO"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#BO"+i+"").val()) || 0 ) + (parseInt($("#ZO"+i+"").val()) || 0 ) +
+          (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
+    });
+    $("#ZO"+i+"").on("change",function(){
+          // if(s5<0 || s5>60)
+          //    {
+          //       alert("Please enter marks between 0 and 60");
+          //    }
+          if(parseInt($("#ZO"+i+"").val())<0 || parseInt($("#ZO"+i+"").val())>60)
+             {
+                $("#ZO"+i+"").focus();
+                alert("Please enter marks between 0 and 60");
+                parseInt($("#ZO"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#BO"+i+"").val()) || 0 ) + (parseInt($("#ZO"+i+"").val()) || 0 ) +
+          (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
+    });
        $("#P"+i+"").on("change",function(){
           // if(s5<0 || s5>60)
           //    {
@@ -83,6 +113,71 @@
           (parseInt($("#MA"+i+"").val()) || 0 ) + (parseInt($("#MB"+i+"").val()) || 0 ) +
           (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
     });
+
+    $("#EMA"+i+"").on("change",function(){
+          // if(s5<0 || s5>60)
+          //    {
+          //       alert("Please enter marks between 0 and 60");
+          //    }
+          if(parseInt($("#EMA"+i+"").val())<0 || parseInt($("#EMA"+i+"").val())>100)
+             {
+                $("#EMA"+i+"").focus();
+                alert("Please enter marks between 0 and 100");
+                parseInt($("#EMA"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#EMA"+i+"").val()) || 0 ) + (parseInt($("#EMB"+i+"").val()) || 0 ) +
+          (parseInt($("#ECO"+i+"").val()) || 0) + (parseInt($("#COMM"+i+"").val()) || 0)));
+    });
+    $("#EMB"+i+"").on("change",function(){
+          // if(s5<0 || s5>60)
+          //    {
+          //       alert("Please enter marks between 0 and 60");
+          //    }
+          if(parseInt($("#EMB"+i+"").val())<0 || parseInt($("#EMB"+i+"").val())>100)
+             {
+                $("#EMB"+i+"").focus();
+                alert("Please enter marks between 0 and 100");
+                parseInt($("#EMB"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#EMA"+i+"").val()) || 0 ) + (parseInt($("#EMB"+i+"").val()) || 0 ) +
+          (parseInt($("#ECO"+i+"").val()) || 0) + (parseInt($("#COMM"+i+"").val()) || 0)));
+    });
+
+
+    $("#ECO"+i+"").on("change",function(){
+          // if(s5<0 || s5>60)
+          //    {
+          //       alert("Please enter marks between 0 and 60");
+          //    }
+          if(parseInt($("#ECO"+i+"").val())<0 || parseInt($("#ECO"+i+"").val())>100)
+             {
+                $("#ECO"+i+"").focus();
+                alert("Please enter marks between 0 and 100");
+                parseInt($("#ECO"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#EMA"+i+"").val()) || 0 ) + (parseInt($("#EMB"+i+"").val()) || 0 ) +
+          (parseInt($("#ECO"+i+"").val()) || 0) + (parseInt($("#COMM"+i+"").val()) || 0)));
+    });
+    $("#COMM"+i+"").on("change",function(){
+          // if(s5<0 || s5>60)
+          //    {
+          //       alert("Please enter marks between 0 and 60");
+          //    }
+          if(parseInt($("#COMM"+i+"").val())<0 || parseInt($("#COMM"+i+"").val())>100)
+             {
+                $("#COMM"+i+"").focus();
+                alert("Please enter marks between 0 and 100");
+                parseInt($("#COMM"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#EMA"+i+"").val()) || 0 ) + (parseInt($("#EMB"+i+"").val()) || 0 ) +
+          (parseInt($("#ECO"+i+"").val()) || 0) + (parseInt($("#COMM"+i+"").val()) || 0)));
+    });
+
+
        $("#C"+i+"").on("change",function(){
           // if(s6<0 || s6>60)
           //    {
