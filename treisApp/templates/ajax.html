@@ -2,7 +2,7 @@
     $(document).ready(function()
     {
        elements = document.getElementsByName('the-row');
-       console.log(elements.length)
+       console.log(elements.length);
        for(let i=1; i<=elements.length; ++i)
        {
        parseInt($("#T"+i+"").val(0));   
@@ -81,7 +81,7 @@
              }
           parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
           (parseInt($("#BO"+i+"").val()) || 0 ) + (parseInt($("#ZO"+i+"").val()) || 0 ) +
-          (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
+          (parseInt($("#BP"+i+"").val()) || 0) + (parseInt($("#BC"+i+"").val()) || 0)));
     });
     $("#ZO"+i+"").on("change",function(){
           // if(s5<0 || s5>60)
@@ -96,7 +96,7 @@
              }
           parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
           (parseInt($("#BO"+i+"").val()) || 0 ) + (parseInt($("#ZO"+i+"").val()) || 0 ) +
-          (parseInt($("#P"+i+"").val()) || 0) + (parseInt($("#C"+i+"").val()) || 0)));
+          (parseInt($("#BP"+i+"").val()) || 0) + (parseInt($("#BC"+i+"").val()) || 0)));
     });
        $("#P"+i+"").on("change",function(){
           // if(s5<0 || s5>60)
@@ -175,6 +175,37 @@
           parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
           (parseInt($("#EMA"+i+"").val()) || 0 ) + (parseInt($("#EMB"+i+"").val()) || 0 ) +
           (parseInt($("#ECO"+i+"").val()) || 0) + (parseInt($("#COMM"+i+"").val()) || 0)));
+    });
+
+    $("#BP"+i+"").on("change",function(){
+          // if(s5<0 || s5>60)
+          //    {
+          //       alert("Please enter marks between 0 and 60");
+          //    }
+          if(parseInt($("#BP"+i+"").val())<0 || parseInt($("#BP"+i+"").val())>100)
+             {
+                $("#BP"+i+"").focus();
+                alert("Please enter marks between 0 and 100");
+                parseInt($("#BP"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#BO"+i+"").val()) || 0 ) + (parseInt($("#ZO"+i+"").val()) || 0 ) +
+          (parseInt($("#BP"+i+"").val()) || 0) + (parseInt($("#BC"+i+"").val()) || 0)));
+    });
+    $("#BC"+i+"").on("change",function(){
+          // if(s5<0 || s5>60)
+          //    {
+          //       alert("Please enter marks between 0 and 60");
+          //    }
+          if(parseInt($("#BC"+i+"").val())<0 || parseInt($("#BC"+i+"").val())>100)
+             {
+                $("#BC"+i+"").focus();
+                alert("Please enter marks between 0 and 100");
+                parseInt($("#COMM"+i+"").val(''));
+             }
+          parseInt($("#T"+i+"").val((parseInt($("#E"+i+"").val()) || 0) + (parseInt($("#S"+i+"").val()) || 0 )+
+          (parseInt($("#BO"+i+"").val()) || 0 ) + (parseInt($("#ZO"+i+"").val()) || 0 ) +
+          (parseInt($("#BP"+i+"").val()) || 0) + (parseInt($("#BC"+i+"").val()) || 0)));
     });
 
 

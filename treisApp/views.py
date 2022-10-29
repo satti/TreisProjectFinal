@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from .models import Marks, Student
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from copy import deepcopy
+from django.contrib import messages
 # Create your views here.
 
 def loginView(request):
@@ -39,7 +40,7 @@ def studentView(request):
         group = request.POST['group']
         address = request.POST['address']
         Student.objects.create(user=user,name=name,fathername=fathername,dob=dob,academicyear=ac,year=year,group=group,address=address)
-        print("Data Created")
+        messages.info(request,"Student Data Inserted")
         return redirect(homeView)         
     else:
         return render(request,'student.html',{})
@@ -135,8 +136,8 @@ def marksEntry(request):
                 S = request.POST.get('S'+str(i)+'')
                 MA = request.POST.get('BO'+str(i)+'')
                 MB = request.POST.get('ZO'+str(i)+'')
-                P = request.POST.get('P'+str(i)+'')
-                C = request.POST.get('C'+str(i)+'')
+                P = request.POST.get('BP'+str(i)+'')
+                C = request.POST.get('BC'+str(i)+'')
                 Marks.objects.create(name=name,user=user,year=year,group=group,testtype=test,ac=ac,s1=E,s2=S,s3=MA,s4=MB,s5=P,s6=C)
             else:   
                 E = request.POST.get('E'+str(i)+'')
@@ -146,6 +147,7 @@ def marksEntry(request):
                 P = request.POST.get('ECO'+str(i)+'')
                 C = request.POST.get('COMM'+str(i)+'')
                 Marks.objects.create(name=name,user=user,year=year,group=group,testtype=test,ac=ac,s1=E,s2=S,s3=MA,s4=MB,s5=P,s6=C)
+        messages.info(request,f"Marks of {year} {group} {test} Inserted Successfully!")        
         return redirect(homeView)
     else:
         g = request.GET.get('group')

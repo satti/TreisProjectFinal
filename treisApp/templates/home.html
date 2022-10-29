@@ -110,6 +110,17 @@
             {%endif%} 
             </nav>
             <br>
+            {% if messages %}
+            <ul>
+            {% for message in messages %}
+            <h1 style="color: green;">
+            <li {% if message.tags %} class="{{message.tags}}" {%endif%}>
+            {{message}}</h1>
+            </li>
+            {%endfor%}
+            </ul>
+            {%endif%}
+        
         </div>
     {%block content%}
 
