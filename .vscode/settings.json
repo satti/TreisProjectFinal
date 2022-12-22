@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/cd1ee869-e688-400e-8d2e-6d0cc2e5cbd8/AppServices/subscriptions/cd1ee869-e688-400e-8d2e-6d0cc2e5cbd8/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/treis-webapp",
+    "appService.deploySubpath": "."
+}

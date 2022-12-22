@@ -20,7 +20,7 @@
         <th>actions</th>
     </thead>
     <tbody>
-        {%for i in students%}
+        {%for i in forms%}
         <tr>
             <td class="text-center">{{forloop.counter}}</td>
             <td>{{i.name}}</td>
@@ -32,42 +32,10 @@
             <td><a href="{% url 'studupdate' i.id %}"><input type="submit" value="update" class="btn btn-success btn-sm"></a> 
                 <a href="{% url 'studentdelete' i.id %}"><input type="submit" value="delete" class="btn btn-danger btn-sm"></a></td>
         </tr>
-        {%endfor%}
-        <!--
-        {% for post in page_obj.object_list %}
-        <tr>
-            <td class="text-center">{{forloop.counter}}</td>
-            <td>{{post.name}}</td>
-            <td>{{post.fathername}}</td>
-            <td>{{post.dob}}</td>
-            <td>{{post.year}}</td>
-            <td>{{post.group}}</td>
-            <td>{{post.address}}</td>
-            <td><a href="{% url 'studupdate' post.id %}"><input type="submit" value="update" class="btn btn-success btn-sm"></a> 
-                <a href="{% url 'studentdelete' post.id %}"><input type="submit" value="delete" class="btn btn-danger btn-sm"></a></td>
-        </tr>
-        {%endfor%}
-    -->
-    </tbody>
+        {% endfor %}
+</tbody>
 </table>
-    <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{page_obj.previous_page_number}}">previous</a>
-            {% endif %}
-    
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
-    
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
-    </div>-
-</body>
-{%endblock%}
 </div>
+</body>
+{% endblock %}
 </html>

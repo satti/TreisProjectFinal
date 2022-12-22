@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,6 +26,8 @@ SECRET_KEY = 'django-insecure-u8*g=1^pm!!o5=p=4v9c!u9z!d9#ge^_*(i3#q2sy^!*=@q6-x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#ALLOWED_HOSTS = ['treis-webapp.azurewebsites.net']
+
 ALLOWED_HOSTS = []
 
 
@@ -37,12 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'treisApp',
-    'percapitaApp'
+    'percapitaApp',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,6 +81,23 @@ WSGI_APPLICATION = 'TreisPro.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mytreisdb',
+        'USER': 'treisadmin@treisdbserver',
+        'PASSWORD': 'Tsrjc@9724',
+        'HOST': 'treisdbserver.postgres.database.azure.com',
+        'PORT': '5432',
+        'OPTIONS' : {
+            "sslmode": "require"
+        },
+    }
+}
+
+'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -82,7 +105,6 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': 'Root@123',
         'HOST': '127.0.0.1',
-        'PORT': '',
     }
 }
 
@@ -121,11 +143,29 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/TreisPro/static/'
 
+CSRF_TRUSTED_ORIGINS=['https://treis-webapp.azurewebsites.net']
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = [BASE_DIR / 'TreisPro/static']
+STATICFILES_DIRS = (os.path.join(BASE_DIR / 'TreisPro/static'),)
+
+MEDIA_URL = '/TreisPro/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'TreisPro/media')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles')
+
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_HEADERS = ['*']
+
+CORS_ALLOW_CREDENTIALS = False
+

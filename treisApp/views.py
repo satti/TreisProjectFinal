@@ -39,6 +39,7 @@ def studentView(request):
         year = request.POST['year']
         group = request.POST['group']
         address = request.POST['address']
+        print(year)
         Student.objects.create(user=user,name=name,fathername=fathername,dob=dob,academicyear=ac,year=year,group=group,address=address)
         messages.info(request,"Student Data Inserted")
         return redirect(homeView)         
@@ -46,31 +47,16 @@ def studentView(request):
         return render(request,'student.html',{})
 
 
-def students(request):
+def students_view(request):
     if request.method == 'POST':
         y = request.POST.get('year')
         g = request.POST.get('group')
-        print(y,g,request.user.id)
-        students = Student.objects.filter(year=y, group=g, user_id=request.user.id).order_by('id')
-        #stu = deepcopy(students)
-        print(students.count())
-        if students:
-            p = Paginator(students,2)
-            #page_request_var = "page"
-            page_number = request.session.get('pa')
-            #print('page_number',page_number)
-            #print()
-            #page_obj = p.get_page(page_number)
-            try:
-                page_obj = p.get_page(page_number)
-            except PageNotAnInteger:
-                page_obj = p.page(1)
-            except EmptyPage:
-                page_obj = p.page(p.num_pages)
-            #-context = {'page_obj': page_obj,'page_request_var':page_request_var}
-            #print(dir(p))
-            #print('page')
-            return render(request,'studentslist.html',{'students':students,'page_obj':page_obj})
+        try:
+            students = Student.objects.filter(year=y,group=g,user_id=request.user.id)
+        except:
+            raise ConnectionAbortedError
+        print(y,g,students,request.user.id)
+        return render(request,'studentslist.html',{'forms':students})
     else:
         request.session['pa']=1
         return render(request,'student_display.html',{})
@@ -110,6 +96,7 @@ def homeView(request):
     return render(request,'home.html',{})
 def marksView(request):
     return render(request,"studentsmarks.html",{})
+
 
 def marksEntry(request):
     form = Student.objects.filter(user_id=request.user.id, year=request.GET.get('year'),
@@ -160,16 +147,6 @@ def marksEntry(request):
             return render(request,'marksbpc.html',{'form':form})
         else:
             return render(request,'marksmec.html',{'form':form})  
-'''
-def marksReport(request):
-    if request.method =="GET":
-        y = request.GET.get('year')
-        g = request.GET.get('group')
-        type = request.GET.get('testtype')
-        report = Marks.objects.filter(user_id=request.user.id,year=y,group=g,testtype=type)
-    return render(request,'marksreport.html',{'report':report})
-'''
-
 
 def marksList(request):
     if request.method =="POST":
